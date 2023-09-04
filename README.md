@@ -2,6 +2,42 @@
 
 Just trying to build everything from scratch in JS for self educational purposes.
 
+## Usage
+See main-test.js for usage details.
+
+```js
+// Sample data for AND Function
+  const trainData = [
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+  ];
+
+  const trainLabels = [
+    [0],
+    [0],
+    [0],
+    [1]
+  ];
+
+  // Hyperparameters
+  const epochs = 5000;
+  const learning_rate = 0.1;
+
+  // Train the neural network
+  console.log("Training the neural network...");
+  const { weights, bias } = train(trainData, trainLabels, epochs, learning_rate);
+  console.log(weights, bias)
+
+  // Test the neural network
+  console.log("Testing the neural network...");
+  for (const input of trainData) {
+    const prediction = predict([input], weights, bias, sigmoid);  // Wrap 'input' in an array to make it 2D
+    console.log(`For input [${input}], prediction is ${prediction}`);
+  }
+```
+
 ## Includes
 **Matrix Multiplication Function**
 
@@ -45,5 +81,6 @@ Use some sample data to train and test your neural network.
 Currnet implmentation is limited to:
 - 2D data
 - single layer perceptrons
+- binary prediction (0 or 1)
 
 A single-layer perceptron is essentially a linear classifier. It can only deal with problems that are linearly separable. 
